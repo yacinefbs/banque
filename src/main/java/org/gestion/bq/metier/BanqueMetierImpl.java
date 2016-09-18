@@ -13,7 +13,7 @@ import org.gestion.bq.entities.Retrait;
 import org.gestion.bq.entities.Versement;
 import org.springframework.transaction.annotation.Transactional;
 
-@Transactional
+@Transactional 
 public class BanqueMetierImpl implements IBanqueMetier {
 
 	private IBanqueDao dao;
