@@ -83,9 +83,9 @@ public class BanqueMetierImpl implements IBanqueMetier {
 	}
 
 	@Override
-	public List<Operation> consulterOperation(String codeCpte) {
+	public List<Operation> consulterOperations(String codeCpte) {
 		// TODO Auto-generated method stub
-		return dao.consulterOperation(codeCpte);
+		return dao.consulterOperations(codeCpte);
 	}
 
 	@Override

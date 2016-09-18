@@ -83,7 +83,7 @@ public class banqueDaoImpl implements IBanqueDao {
 	}
 
 	@Override
-	public List<Operation> consulterOperation(String codeCpte) {
+	public List<Operation> consulterOperations(String codeCpte) {
 		// TODO Auto-generated method stub
 		Query req = em.createQuery("select o from Operation o where o.compte.codeCompte=:x");
 		req.setParameter("x", codeCpte);
