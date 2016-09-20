@@ -78,15 +78,17 @@ public class banqueDaoImpl implements IBanqueDao {
 	public Compte consulterCompte(String codeCpte) {
 		// TODO Auto-generated method stub
 		Compte cp = em.find(Compte.class, codeCpte);
-		if(cp==null) throw new RuntimeException("Compte introuvable!");
+		if(cp==null) throw new RuntimeException("Compte " + codeCpte + " introuvable!");
 		return cp;
 	}
 
 	@Override
-	public List<Operation> consulterOperations(String codeCpte) {
+	public List<Operation> consulterOperations(String codeCpte, int position, int nbOperation) {
 		// TODO Auto-generated method stub
-		Query req = em.createQuery("select o from Operation o where o.compte.codeCompte=:x");
+		Query req = em.createQuery("select o from Operation o where o.compte.codeCompte=:x order by o.dateOperation desc");
 		req.setParameter("x", codeCpte);
+		req.setFirstResult(position);
+		req.setMaxResults(nbOperation);
 		return req.getResultList();
 	}
 
@@ -139,6 +141,14 @@ public class banqueDaoImpl implements IBanqueDao {
 		Query req = em.createQuery("select e from Employe e where e.groupes.codeGroupe=:x");
 		req.setParameter("x", codeGr);
 		return req.getResultList();
+	}
+
+	@Override
+	public long getNombreOperation(String numCpte) {
+		// TODO Auto-generated method stub
+		Query req = em.createQuery("select count(o) from Operation o where o.compte.codeCompte=:x");
+		req.setParameter("x", numCpte);
+		return (Long) req.getResultList().get(0);
 	}
 
 }

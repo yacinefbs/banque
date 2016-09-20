@@ -22,7 +22,7 @@ public class Test2 {
 		System.out.println("Employé : " + cp.getEmploye().getNomEmploye());
 		
 		
-		List<Operation> ops = metier.consulterOperations("CC1");
+		List<Operation> ops = metier.consulterOperations("CC1", 0, 5);
 		
 		for(Operation op:ops){
 			System.out.println("*****************");
